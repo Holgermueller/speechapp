@@ -7,13 +7,14 @@
         <v-textarea
           placeholder="Type your message here..."
           outlined
+          clearable
         ></v-textarea>
 
         <h4>toxicity rating will appear here...</h4>
       </v-card-text>
 
       <v-card-actions>
-        <v-btn block> Block </v-btn>
+        <v-btn elevation="0" dark block> Block </v-btn>
       </v-card-actions>
     </v-card>
   </div>
