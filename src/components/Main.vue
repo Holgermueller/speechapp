@@ -5,12 +5,15 @@
 
       <v-card-text>
         <v-textarea
+          v-model="TextToCheck"
           placeholder="Type your message here..."
           outlined
           clearable
         ></v-textarea>
 
         <h4>toxicity rating will appear here...</h4>
+
+        <h4>{{ TextToCheck }}</h4>
       </v-card-text>
 
       <v-card-actions>
@@ -23,6 +26,10 @@
 <script>
 export default {
   name: "MainCard",
+
+  data: () => ({
+    TextToCheck: "",
+  }),
 };
 </script>
 

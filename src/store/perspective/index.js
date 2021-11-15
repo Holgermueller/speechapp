@@ -1,9 +1,23 @@
 export default {
-  state: {},
+  state: {
+    checkedText: "",
+  },
 
-  mutations: {},
+  mutations: {
+    CHECK_TEXT(state, payload) {
+      state.checkedText = payload;
+    },
+  },
 
-  actions: {},
+  actions: {
+    getTextToCheck() {},
 
-  getters: {},
+    checkText() {},
+  },
+
+  getters: {
+    checkedText(state) {
+      return state.checkedText;
+    },
+  },
 };
