@@ -13,7 +13,7 @@
 
         <h4>toxicity rating will appear here...</h4>
 
-        <h4>{{ TextToCheck }}</h4>
+        <h4>{{ checkedText }}</h4>
       </v-card-text>
 
       <v-card-actions>
@@ -30,6 +30,18 @@ export default {
   data: () => ({
     TextToCheck: "",
   }),
+
+  computed: {
+    checkText() {
+      return this.$store.dispatch("getTextToCheck", {
+        TextToCheck: this.TextToCheck,
+      });
+    },
+
+    checkedText() {
+      return this.$store.getters.checkedText;
+    },
+  },
 };
 </script>
 

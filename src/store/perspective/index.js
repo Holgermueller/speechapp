@@ -1,6 +1,7 @@
 export default {
   state: {
     checkedText: "",
+    textToCheck: "",
   },
 
   mutations: {
@@ -10,7 +11,11 @@ export default {
   },
 
   actions: {
-    getTextToCheck() {},
+    getTextToCheck({ commit }, payload) {
+      let textToCheck = payload.TextToCheck;
+
+      commit("CHECK_TEXT", textToCheck);
+    },
 
     checkText() {},
   },
