@@ -9,6 +9,7 @@
           placeholder="Type your message here..."
           outlined
           clearable
+          @input="checkText"
         ></v-textarea>
 
         <h4>toxicity rating will appear here...</h4>
@@ -17,7 +18,7 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn elevation="0" dark block> Block </v-btn>
+        <v-btn elevation="0" dark block> Speak </v-btn>
       </v-card-actions>
     </v-card>
   </div>
@@ -32,14 +33,16 @@ export default {
   }),
 
   computed: {
+    checkedText() {
+      return this.$store.getters.checkedText;
+    },
+  },
+
+  methods: {
     checkText() {
       return this.$store.dispatch("getTextToCheck", {
         TextToCheck: this.TextToCheck,
       });
-    },
-
-    checkedText() {
-      return this.$store.getters.checkedText;
     },
   },
 };
