@@ -1,23 +1,20 @@
 export default {
   state: {
     checkedText: "",
-    textToCheck: "",
   },
 
   mutations: {
-    CHECK_TEXT(state, payload) {
+    CHECKED_TEXT(state, payload) {
       state.checkedText = payload;
     },
   },
 
   actions: {
-    getTextToCheck({ commit }, payload) {
-      let textToCheck = payload.TextToCheck;
+    checkText({ commit }, payload) {
+      let textFromDOM = payload.textToCheck;
 
-      commit("CHECK_TEXT", textToCheck);
+      commit("CHECKED_TEXT", textFromDOM);
     },
-
-    checkText() {},
   },
 
   getters: {

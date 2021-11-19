@@ -5,7 +5,7 @@
 
       <v-card-text>
         <v-textarea
-          v-model="TextToCheck"
+          v-model="textToCheck"
           placeholder="Type your message here..."
           outlined
           clearable
@@ -29,7 +29,7 @@ export default {
   name: "MainCard",
 
   data: () => ({
-    TextToCheck: "",
+    textToCheck: "",
   }),
 
   computed: {
@@ -40,8 +40,8 @@ export default {
 
   methods: {
     checkText() {
-      return this.$store.dispatch("getTextToCheck", {
-        TextToCheck: this.TextToCheck,
+      return this.$store.dispatch("checkText", {
+        textToCheck: this.textToCheck,
       });
     },
   },
