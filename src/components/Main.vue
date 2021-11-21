@@ -48,7 +48,9 @@ export default {
     },
 
     turnTextToSpeech() {
-      console.log("click");
+      return this.$store.dispatch("textToTalk", {
+        textToCheck: this.textToCheck,
+      });
     },
   },
 };
