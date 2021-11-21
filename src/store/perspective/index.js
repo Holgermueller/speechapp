@@ -15,6 +15,8 @@ export default {
 
       commit("CHECKED_TEXT", textFromDOM);
     },
+
+    textToTalk({ commit }, payload) {},
   },
 
   getters: {

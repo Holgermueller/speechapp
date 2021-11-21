@@ -18,7 +18,9 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn elevation="0" dark block> Speak </v-btn>
+        <v-btn elevation="0" dark block @click.prevent="turnTextToSpeech">
+          Say it out loud!!
+        </v-btn>
       </v-card-actions>
     </v-card>
   </div>
@@ -43,6 +45,10 @@ export default {
       return this.$store.dispatch("checkText", {
         textToCheck: this.textToCheck,
       });
+    },
+
+    turnTextToSpeech() {
+      console.log("click");
     },
   },
 };
