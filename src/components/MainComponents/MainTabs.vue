@@ -14,7 +14,7 @@
 
       <v-tabs-items v-model="tab">
         <v-tab-item v-for="(form, index) in forms" :key="index">
-          <v-card>
+          <v-card elevation="0">
             <v-card-title class="text-center">
               <h3>
                 {{ form.formMessage }}
@@ -29,6 +29,9 @@
                 <SpeechToTextForm />
               </div>
             </v-card-text>
+            <v-card-actions>
+              <p class="copy">&copy; 2021 Holger Mueller</p>
+            </v-card-actions>
           </v-card>
         </v-tab-item>
       </v-tabs-items>
@@ -69,5 +72,10 @@ export default {
 <style scoped>
 .main-tabs {
   margin: 9% auto;
+}
+
+.copy {
+  text-align: center;
+  margin: auto;
 }
 </style>
