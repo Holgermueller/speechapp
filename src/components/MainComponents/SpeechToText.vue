@@ -15,7 +15,23 @@
 export default {
   name: "SpeechToTextForm",
 
-  data: () => ({}),
+  data: () => ({
+    runTimeTranscript: "",
+    transcript: [],
+    lang_: "es-ES",
+  }),
+
+  methods: {
+    checkCompat() {
+      window.SpeechRecognitionAlternative =
+        window.SpeechRecognitionAlternative || window.webkitSpee;
+
+      if (!recognition) {
+        this.error =
+          "Speech recognition not availible on this browser.Please use Chrome or Firefox.";
+      }
+    },
+  },
 };
 </script>
 
