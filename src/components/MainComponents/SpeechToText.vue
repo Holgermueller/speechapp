@@ -14,7 +14,7 @@
               large
               fab
               class="talk-button"
-              @click.prevent="toggleRecording"
+              @click.prevent="checkCompat"
               ><v-icon> {{ recordingIcon }}</v-icon></v-btn
             >
           </v-list-item-content>
@@ -41,16 +41,6 @@ export default {
     transcript: [],
     lang_: "es-ES",
     recording: false,
-    controlDisplayData: [
-      {
-        icon: "mdi-microphone",
-        message: "Recording",
-      },
-      {
-        icon: "mdi-microphone-off",
-        message: "Not Recording",
-      },
-    ],
   }),
 
   computed: {
@@ -72,22 +62,14 @@ export default {
   },
 
   methods: {
-    checkCompat() {
-      // window.SpeechRecognition =
-      //   window.SpeechRecognition || window.webkitSpeechRecognition;
-      // const recognition = new SpeechRecognition();
-      // recognition.interimResults = true;
-      // if (!recognition) {
-      //   this.error =
-      //     "Speech recognition not availible on this browser.Please use Chrome or Firefox.";
-      // }
-      // recognition.addEventListener("result", (e) => {
-      //   const transcript = Array.from(e.results)
-      //     .map((result) => result[0])
-      //     .map((result) => result.transcript)
-      //     .join("");
-      //   console.log(transcript);
-      //});
+    checkCompat(e) {
+      const recognition = new window.webkitSpeechRecognition();
+
+      if (recognition in window) {
+        console.log("recog availible");
+      } else {
+        console.log("not availible: " + e.message);
+      }
     },
 
     toggleRecording() {
