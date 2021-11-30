@@ -44,9 +44,15 @@ export default {
     },
 
     turnTextToSpeech() {
-      return this.$store.dispatch("textToTalk", {
-        textToCheck: this.textToCheck,
-      });
+      // return this.$store.dispatch("textToTalk", {
+      //   textToCheck: this.textToCheck,
+      // });
+
+      let speech = new SpeechSynthesisUtterance();
+
+      speech.lang = "en";
+      speech.text = this.textToCheck;
+      window.speechSynthesis.speak(speech);
     },
   },
 };

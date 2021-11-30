@@ -63,7 +63,10 @@ export default {
 
   methods: {
     checkCompat(e) {
-      const recognition = new window.webkitSpeechRecognition();
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      const recognition = new SpeechRecognition();
 
       if (recognition in window) {
         console.log("recog availible");
