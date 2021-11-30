@@ -15,7 +15,13 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-btn elevation="0" dark block @click.prevent="turnTextToSpeech">
+      <v-btn
+        elevation="0"
+        dark
+        block
+        @click.prevent="turnTextToSpeech"
+        :disabled="!formIsValid"
+      >
         Say it out loud!!
       </v-btn>
     </v-card-actions>
@@ -31,6 +37,10 @@ export default {
   }),
 
   computed: {
+    formIsValid() {
+      return this.textToCheck !== "" || this.textToCheck !== null;
+    },
+
     checkedText() {
       return this.$store.getters.checkedText;
     },
