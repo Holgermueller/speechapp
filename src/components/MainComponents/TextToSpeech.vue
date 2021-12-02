@@ -9,6 +9,15 @@
         @input="checkText"
       ></v-textarea>
 
+      <div>
+        <v-select
+          :items="voiceList"
+          label="Select a voice"
+          dense
+          outlined
+        ></v-select>
+      </div>
+
       <h4>toxicity rating will appear here...</h4>
 
       <h4>{{ checkedText }}</h4>
@@ -34,6 +43,8 @@ export default {
 
   data: () => ({
     textToCheck: "",
+    synth: window.speechSynthesis.onvoiceschanged,
+    voiceList: [],
   }),
 
   computed: {
@@ -54,15 +65,9 @@ export default {
     },
 
     turnTextToSpeech() {
-      // return this.$store.dispatch("textToTalk", {
-      //   textToCheck: this.textToCheck,
-      // });
-
-      let speech = new SpeechSynthesisUtterance();
-
-      speech.lang = "en";
-      speech.text = this.textToCheck;
-      window.speechSynthesis.speak(speech);
+      this.$store.dispatch("talk", {
+        textToCheck: this.textToCheck,
+      });
     },
   },
 };
