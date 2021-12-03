@@ -16,11 +16,21 @@ export default {
 
   actions: {
     getVoices({ commit }) {
+      if (typeof speechSynthesis === "undefined") {
+        return;
+      }
+
       let voiceList = window.speechSynthesis.getVoices();
       let voicesArray = [];
-      let voicesForDom = voiceList;
 
-      voicesArray.push(voicesForDom);
+      console.log(voiceList);
+
+      voiceList.forEach((voice) => {
+        let voicesForDom = {
+          name: voice.name,
+        };
+        voicesArray.push(voicesForDom);
+      });
 
       commit("SET_VOICES", voicesArray);
     },

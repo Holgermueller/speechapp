@@ -55,6 +55,10 @@ export default {
     checkedText() {
       return this.$store.getters.checkedText;
     },
+
+    voices() {
+      return this.$store.getters.voices;
+    },
   },
 
   methods: {
