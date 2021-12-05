@@ -11,7 +11,7 @@
 
       <div>
         <v-select
-          :items="voiceList"
+          :items="voices"
           label="Select a voice"
           dense
           outlined
@@ -57,7 +57,11 @@ export default {
     },
 
     voices() {
-      return this.$store.getters.voices;
+      let voiceList = window.speechSynthesis.getVoices();
+
+      console.log(voiceList);
+
+      return voiceList.map((voice) => voice.name + " (" + voice.lang + ")");
     },
   },
 

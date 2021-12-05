@@ -16,9 +16,9 @@ export default {
 
   actions: {
     getVoices({ commit }) {
-      if (typeof speechSynthesis === "undefined") {
-        return;
-      }
+      // if (typeof speechSynthesis === "undefined") {
+      //   return;
+      // }
 
       let voiceList = window.speechSynthesis.getVoices();
       let voicesArray = [];
