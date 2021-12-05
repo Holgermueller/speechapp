@@ -13,6 +13,8 @@
         <v-select
           :items="voices"
           label="Select a voice"
+          v-model="voiceToHear"
+          return-object
           dense
           outlined
         ></v-select>
@@ -45,6 +47,7 @@ export default {
     textToCheck: "",
     synth: window.speechSynthesis.onvoiceschanged,
     voiceList: [],
+    voiceToHear: 0,
   }),
 
   computed: {
@@ -59,8 +62,6 @@ export default {
     voices() {
       let voiceList = window.speechSynthesis.getVoices();
 
-      console.log(voiceList);
-
       return voiceList.map((voice) => voice.name + " (" + voice.lang + ")");
     },
   },
@@ -73,8 +74,11 @@ export default {
     },
 
     turnTextToSpeech() {
+      console.log(this.voiceToHear);
+
       this.$store.dispatch("talk", {
         textToCheck: this.textToCheck,
+        voiceToHear: this.voices[this.voiceToHear],
       });
     },
   },

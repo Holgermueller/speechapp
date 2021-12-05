@@ -15,31 +15,33 @@ export default {
   },
 
   actions: {
-    getVoices({ commit }) {
-      // if (typeof speechSynthesis === "undefined") {
-      //   return;
-      // }
+    // getVoices({ commit }) {
+    //   if (typeof speechSynthesis === "undefined") {
+    //     return;
+    //   }
 
-      let voiceList = window.speechSynthesis.getVoices();
-      let voicesArray = [];
+    //   let voiceList = window.speechSynthesis.getVoices();
+    //   let voicesArray = [];
 
-      console.log(voiceList);
+    //   console.log(voiceList);
 
-      voiceList.forEach((voice) => {
-        let voicesForDom = {
-          name: voice.name,
-        };
-        voicesArray.push(voicesForDom);
-      });
+    //   voiceList.map((voice) => {
+    //     let voicesForDom = {
+    //       name: voice.name,
+    //       lang: voice.lang,
+    //     };
+    //     voicesArray.push(voicesForDom);
+    //   });
 
-      commit("SET_VOICES", voicesArray);
-    },
+    //   commit("SET_VOICES", voicesArray);
+    // },
 
     talk({ commit }, payload) {
       let speech = new SpeechSynthesisUtterance();
 
       speech.lang = "en";
       speech.text = payload.textToCheck;
+      speech.voice = payload.voiceToHere;
 
       commit("SET_MESSAGE", window.speechSynthesis.speak(speech));
     },
