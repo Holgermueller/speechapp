@@ -15,12 +15,6 @@
       <v-tabs-items v-model="tab">
         <v-tab-item v-for="(form, index) in forms" :key="index">
           <v-card elevation="0">
-            <v-card-title class="text-center">
-              <h3>
-                {{ form.formMessage }}
-              </h3>
-            </v-card-title>
-
             <v-card-text>
               <div v-if="form.formName === 'Text to Speech'">
                 <TextToSpeechForm />
@@ -56,12 +50,12 @@ export default {
     forms: [
       {
         formName: "Text to Speech",
-        formMessage: "Type here:",
+
         icon: "mdi mdi-pen",
       },
       {
         formName: "Speech to Text",
-        formMessage: "Speak here:",
+
         icon: "mdi mdi-microphone",
       },
     ],

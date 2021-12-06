@@ -14,7 +14,6 @@
           :items="voices"
           label="Select a voice"
           v-model="voiceToHear"
-          return-object
           dense
           outlined
         ></v-select>
